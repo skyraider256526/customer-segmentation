@@ -6,6 +6,12 @@ name = "pypi"
 [packages]
 pyqt5-tools = "*"
 pyqt5 = "*"
+numpy = "*"
+pandas = "*"
+sklearn = "*"
+matplotlib = "*"
+seaborn = "*"
+yellowbrick = "*"
 
 [dev-packages]
 yapf = "*"
