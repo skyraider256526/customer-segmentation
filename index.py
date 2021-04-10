@@ -40,6 +40,10 @@ class MainApp(QMainWindow, ui):
         #Disabling remove columns before loading dataset for training
         self.listWidget_data_train.setEnabled(False)
 
+        style = open('./themes/default.css', 'r')
+        style = style.read()
+        self.setStyleSheet(style)
+
     def HandleButtons(self):
         self.button_data_train.clicked.connect(self.HandleTrainBrowse)
         self.button_data_test.clicked.connect(self.HandleRunBrowse)
@@ -50,8 +54,13 @@ class MainApp(QMainWindow, ui):
         self.pushButton.clicked.connect(self.Open_Create)
         self.pushButton_2.clicked.connect(self.Open_Run)
         self.pushButton_3.clicked.connect(self.Open_Summary)
+        self.pushButton_4.clicked.connect(self.open_Settings)
         self.button_model.clicked.connect(self.HandleModelBrowse)
         self.button_summary.clicked.connect(self.Summary)
+        self.button_darkblue.clicked.connect(self.Apply_DarkBlue_Style)
+        self.button_darkorange.clicked.connect(self.Apply_DarkOrange_Style)
+        self.button_dark.clicked.connect(self.Apply_QDark_Style)
+        self.button_darkgray.clicked.connect(self.Apply_DarkGray_Style)
 
     def GetLocation(self, operation: str, filter: str, caption: str) -> str:
         ''' Get file location either save or open file '''
@@ -220,13 +229,39 @@ class MainApp(QMainWindow, ui):
 ###### UI CHanges Methods
 
     def Open_Create(self):
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
 
     def Open_Run(self):
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(3)
 
     def Open_Summary(self):
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
+
+    def open_Settings(self):
+        self.tabWidget.setCurrentIndex(1)
+
+    ################################################
+    ###### App Themes ####
+
+    def Apply_DarkOrange_Style(self):
+        style = open('./themes/darkorange.css', 'r')
+        style = style.read()
+        self.setStyleSheet(style)
+
+    def Apply_QDark_Style(self):
+        style = open('themes/qdark.css', 'r')
+        style = style.read()
+        self.setStyleSheet(style)
+
+    def Apply_DarkGray_Style(self):
+        style = open('themes/qdarkgray.css', 'r')
+        style = style.read()
+        self.setStyleSheet(style)
+
+    def Apply_DarkBlue_Style(self):
+        style = open('./themes/darkblue.css', 'r')
+        style = style.read()
+        self.setStyleSheet(style)
 
 
 def main():
